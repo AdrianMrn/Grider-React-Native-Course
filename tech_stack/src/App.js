@@ -5,12 +5,16 @@ import { createStore } from 'redux';
 
 import reducers from './reducers';
 
+import LibraryList from './components/LibraryList';
+import { Header } from './components/common';
+
 class App extends Component {
     render() {
         return (
             <Provider store={createStore(reducers)}>
-                <View>
-                    <Text>kek</Text>
+                <View style={{ flex: 1 }}>
+                    <Header headerText="Tech Stack" />
+                    <LibraryList />
                 </View>
             </Provider>
         );
