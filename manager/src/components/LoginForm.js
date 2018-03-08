@@ -58,8 +58,8 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                {this.props.error &&
-                    <View style={{ bakgroundColor: 'white' }}>
+                {!!this.props.error &&
+                    <View style={{ backgroundColor: 'white' }}>
                         <Text style={styles.errorTextStyle}>
                             {this.props.error}
                         </Text>
