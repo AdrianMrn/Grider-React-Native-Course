@@ -37,3 +37,29 @@ export const employeesFetch = () => {
             });
     };
 };
+
+export const employeeSave = ({ name, phone, shift, uid }) => {
+    const { currentUser } = firebase.auth();
+
+    return (dispatch) => {
+        firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+            .set({ name, phone, shift })
+            .then(() => {
+                dispatch({ type: EMPLOYEE_CREATE });
+                Actions.pop();
+            });
+    };
+};
+
+export const employeeDelete = ({ uid }) => {
+    const { currentUser } = firebase.auth();
+
+    return (dispatch) => {
+        firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+            .remove()
+            .then(() => {
+                dispatch({ type: EMPLOYEE_CREATE });
+                Actions.pop();
+            });
+    };
+};
